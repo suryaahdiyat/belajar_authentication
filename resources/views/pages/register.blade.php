@@ -29,7 +29,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                             <input type="email" name="email" id="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                                placeholder="name@company.com" required="">
+                                placeholder="name@company.com" required="" value="{{ old('email')}}">
                             @error('email')
                                 <p class="mt-1 text-xs text-rose-500">{{ $message }}</p>
                             @enderror
@@ -45,13 +45,12 @@
                             @enderror
                         </div>
                         <div>
-                            <label for="confirm-password"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
-                                password</label>
-                            <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••"
+                            <label for="password_confirmation"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
                                 required="">
-                            @error('confirm-password')
+                            @error('password_confirmation')
                                 <p class="mt-1 text-xs text-rose-500">{{ $message }}</p>
                             @enderror
                         </div>

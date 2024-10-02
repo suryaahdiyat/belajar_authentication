@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 
 class LoginController extends Controller
 {
@@ -34,11 +35,10 @@ class LoginController extends Controller
         // dd($request->all());
         $validatedData = $request->validate([
             'email' => 'required|email:dns|max:255|unique:users',
-            'password' => 'required|string|min:4',
-            'confirm-password' => 'required|string|min:4'
+            'password' => ['required', 'confirmed', Password::min(4)->mixedCase()->symbols()],
+            // 'password' => 'required|confirmed|string|min:4',
         ]);
 
-        if ($validatedData['password'] != $validatedData['confirm-password']) return back()->with('registerError', 'password does not match');
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);
